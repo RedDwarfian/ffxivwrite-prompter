@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ConfigPanelComponent } from './components/config-panel/config-panel.component';
+import { WritingPromptGeneratorComponent } from './components/writing-prompt-generator/writing-prompt-generator.component';
 
 @Component({
-    selector: 'app-root',
-    imports: [RouterOutlet],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+  selector: 'app-root',
+  imports: [ConfigPanelComponent, WritingPromptGeneratorComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ffxivwrite-prompter';
+  public currentYear = new Date().getFullYear();
 }
