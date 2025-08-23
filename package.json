@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^20.2.1",
     "@angular/platform-browser-dynamic": "^20.2.1",
     "@angular/router": "^20.2.1",
+    "normalize.css": "^8.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
@@ -26,13 +27,43 @@
     "@angular/build": "^20.2.0",
     "@angular/cli": "^20.2.0",
     "@angular/compiler-cli": "^20.2.1",
+    "@eslint/js": "^9.34.0",
     "@types/jasmine": "~5.1.0",
+    "eslint": "^9.34.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.9.2"
+    "lint-staged": "^16.1.5",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.40.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedDwarfian/ffxivwrite-prompter.git"
+  },
+  "keywords": [
+    "FFXIV",
+    "Writing Prompts",
+    "FFxivWrite"
+  ],
+  "author": "RedDwarfian",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/RedDwarfian/malmstone-calculator/issues"
+  },
+  "homepage": "https://github.com/RedDwarfian/malmstone-calculator#readme",
+  "lint-staged": {
+    "!(*.ts)": "prettier --write",
+    "*.ts": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
   }
 }
