@@ -1,5 +1,12 @@
 @use '../../../styles/presets';
 
+h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 .muted {
     color: var(--bg-color);
 }
@@ -7,6 +14,28 @@
 .do-the-thing {
     margin-top: 0.5rem;
     text-align: center;
+}
+
+.roller {
+    height: 5rem;
+    overflow:hidden;
+    
+    h1:not(.muted) {
+        transform: translateY(-24rem);
+        &.flyBy {
+            animation: spinning 1s cubic-bezier(0.465, 1.370, 0.595, 0.960) 0s 1 normal none;
+        }
+    }
+}
+
+@keyframes spinning {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-24rem);
+    }
 }
 
 button {
