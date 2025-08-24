@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-color: #b1b8bf;
+  --border-color: #777;
+  --border-radius: 0.25rem;
+  --text-color: #333;
+  --link-text-color: #111;
+  --link-text-color-hover: #000;
+  --window-bg-color: #edf6ff;
+  --button-bg-color-hover: #a6acb2;
+  --button-bg-color-active: #8e9399;
+  --interactive-padding: 0.25rem 0.5rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.5;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+a {
+  color: var(--link-text-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--link-text-color-hover);
+    text-decoration: underline;
+  }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: 1.125;
+}
