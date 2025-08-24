@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ConfigPanelComponent } from './components/config-panel/config-panel.component';
-import { WritingPromptGeneratorComponent } from './components/writing-prompt-generator/writing-prompt-generator.component';
+import { ConfigPanelComponent } from './component/config-panel/config-panel.component';
+import { WritingPromptGeneratorComponent } from './component/writing-prompt-generator/writing-prompt-generator.component';
 
 @Component({
   selector: 'app-root',
