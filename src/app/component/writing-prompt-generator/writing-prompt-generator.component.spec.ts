@@ -8,9 +8,8 @@ describe('WritingPromptGeneratorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WritingPromptGeneratorComponent]
-    })
-    .compileComponents();
+      imports: [WritingPromptGeneratorComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(WritingPromptGeneratorComponent);
     component = fixture.componentInstance;

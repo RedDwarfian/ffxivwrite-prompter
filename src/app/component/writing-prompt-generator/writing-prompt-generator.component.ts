@@ -1,20 +1,30 @@
-import { Component, inject, ElementRef, viewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  ElementRef,
+  viewChild,
+  OnInit,
+} from '@angular/core';
 import { SpinOptionsService } from '../../service/spin-options.service';
-import { daysAvailableType, promptInterface } from '../../interface/environment.interface';
+import {
+  daysAvailableType,
+  promptInterface,
+} from '../../interface/environment.interface';
 import { promptData } from '../../../environment/environment';
 
 @Component({
   selector: 'app-writing-prompt-generator',
   imports: [],
   templateUrl: './writing-prompt-generator.component.html',
-  styleUrl: './writing-prompt-generator.component.scss'
+  styleUrl: './writing-prompt-generator.component.scss',
 })
 export class WritingPromptGeneratorComponent implements OnInit {
   public spinOptions = inject(SpinOptionsService);
   public randomPrompt: promptInterface | null = null;
   public displayPrompts: promptInterface[] = [];
   public animating = false;
-  private promptInfo = viewChild<ElementRef<HTMLParagraphElement>>('promptInfo');
+  private promptInfo =
+    viewChild<ElementRef<HTMLParagraphElement>>('promptInfo');
 
   ngOnInit(): void {
     this.promptInfo()?.nativeElement.addEventListener('animationend', (ev) => {
@@ -36,18 +46,26 @@ export class WritingPromptGeneratorComponent implements OnInit {
   }
 
   public spin() {
-    const culledPrompts: promptInterface[] = promptData.filter(p => {
+    const culledPrompts: promptInterface[] = promptData.filter((p) => {
       if (!this.spinOptions.includeFree() && p.isFree) {
         return false;
       }
-      if (this.spinOptions.mode() === 'year' && p.year !== this.spinOptions.specifiedYear()) {
+      if (
+        this.spinOptions.mode() === 'year' &&
+        p.year !== this.spinOptions.specifiedYear()
+      ) {
         return false;
       }
-      if (this.spinOptions.mode() === 'date' && p.date !== this.spinOptions.specifiedDate()) {
+      if (
+        this.spinOptions.mode() === 'date' &&
+        p.date !== this.spinOptions.specifiedDate()
+      ) {
         return false;
       }
       if (this.spinOptions.mode() === 'today') {
-        this.spinOptions.todayDate.set(new Date().getDate() as daysAvailableType);
+        this.spinOptions.todayDate.set(
+          new Date().getDate() as daysAvailableType
+        );
         if (p.date !== this.spinOptions.todayDate()) {
           return false;
         }
@@ -62,7 +80,11 @@ export class WritingPromptGeneratorComponent implements OnInit {
       this.randomPrompt = culledPrompts[randomIndex];
 
       // Add the prompts to the displayPrompts so we can animate them all flying by.
-      while (this.displayPrompts.unshift(structuredClone(culledPrompts[randomIndex])) < 7) {
+      while (
+        this.displayPrompts.unshift(
+          structuredClone(culledPrompts[randomIndex])
+        ) < 7
+      ) {
         randomIndex--;
         if (randomIndex < 0) {
           randomIndex += culledPrompts.length;

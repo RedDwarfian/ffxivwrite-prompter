@@ -6,7 +6,10 @@
     "start": "ng serve --port 4202",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "lint": "npx eslint && npx prettier . --check",
+    "clean": "npx eslint --fix && npx prettier . --write",
+    "test": "ng test",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,5 @@
 # ffxivwrite-prompter
+
 A small, single-page webapp to allow people to spin to select a historical #ffxivwrite prompt.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
