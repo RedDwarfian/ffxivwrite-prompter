@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ElementRef, viewChild, OnInit } from '@angular/core';
 import { SpinOptionsService } from '../../service/spin-options.service';
 import { daysAvailableType, promptInterface } from '../../interface/environment.interface';
 import { promptData } from '../../../environment/environment';
@@ -9,10 +9,25 @@ import { promptData } from '../../../environment/environment';
   templateUrl: './writing-prompt-generator.component.html',
   styleUrl: './writing-prompt-generator.component.scss'
 })
-export class WritingPromptGeneratorComponent {
+export class WritingPromptGeneratorComponent implements OnInit {
   public spinOptions = inject(SpinOptionsService);
   public randomPrompt: promptInterface | null = null;
   public displayPrompts: promptInterface[] = [];
+  public animating = false;
+  private promptInfo = viewChild<ElementRef<HTMLParagraphElement>>('promptInfo');
+
+  ngOnInit(): void {
+    this.promptInfo()?.nativeElement.addEventListener('animationend', (ev) => {
+      if (ev.animationName.endsWith('fadeInAnim')) {
+        this.animationFinished();
+      }
+    });
+  }
+
+  animationFinished() {
+    this.promptInfo()?.nativeElement.classList.remove('fadeIn');
+    this.animating = false;
+  }
 
   // We want to reset the animation every time we spin.
   private rollerKey = 0;
@@ -21,7 +36,6 @@ export class WritingPromptGeneratorComponent {
   }
 
   public spin() {
-    console.log('Spinning with options:', this.spinOptions.mode(), this.spinOptions.specifiedYear(), this.spinOptions.specifiedDate(), this.spinOptions.includeFree());
     const culledPrompts: promptInterface[] = promptData.filter(p => {
       if (!this.spinOptions.includeFree() && p.isFree) {
         return false;
@@ -42,7 +56,7 @@ export class WritingPromptGeneratorComponent {
     });
     this.randomPrompt = null;
     this.displayPrompts = [];
-    console.log('Culled prompts:', culledPrompts);
+
     if (culledPrompts.length > 0) {
       let randomIndex = Math.floor(Math.random() * culledPrompts.length);
       this.randomPrompt = culledPrompts[randomIndex];
@@ -54,6 +68,10 @@ export class WritingPromptGeneratorComponent {
           randomIndex += culledPrompts.length;
         }
       }
+
+      // Set the promptInfo to fade in after the flying animation ends.
+      this.promptInfo()?.nativeElement.classList.add('fadeIn');
+      this.animating = true;
     }
   }
 }

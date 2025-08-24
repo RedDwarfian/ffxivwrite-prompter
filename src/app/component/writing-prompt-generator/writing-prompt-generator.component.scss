@@ -38,6 +38,24 @@ h1 {
     }
 }
 
+.fadeIn {
+    animation: fadeInAnim 1.333s ease-in-out 0s 1 normal none;
+}
+
+@keyframes fadeInAnim {
+    0% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 button {
     font-size: 1.25rem;
     @include presets.button;

@@ -1,24 +1,25 @@
 <div class="do-the-thing">
     <button (click)="spin()">Prompt me!</button>
 </div>
-@if (randomPrompt != null) {
-    <div class="roller">
+<div class="roller">
+    @if (randomPrompt != null) {
         @for(prompt of displayPrompts; track rollKey) {
             <h1 animate.enter="flyBy">
                 {{prompt.prompt}}
             </h1>
         }
-    </div>
-    <p>
-        Posted <a [href]="randomPrompt.link">
-            {{(randomPrompt.date === 31) ? "October 3" : `September ${randomPrompt.date}`}}, {{randomPrompt.year}}
-        </a>
-    </p>
-} @else {
-    <div class="roller">
+    } @else {
         <h1 class="muted">
             Wait for it...
         </h1>
-    </div>
-    <p>&nbsp;</p>
-}
+    }
+</div>
+<p #promptInfo>
+    @if (randomPrompt == null) {
+        &nbsp;
+    } @else {
+        Posted <a [href]="randomPrompt.link">
+            {{(randomPrompt.date === 31) ? "October 3" : `September ${randomPrompt.date}`}}, {{randomPrompt.year}}
+        </a>
+    }
+</p>
