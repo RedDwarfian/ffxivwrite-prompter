@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { spinMode, spinLabels, SpinOptionsService } from '../../services/spin-options.service';
+import { spinMode, spinLabels, SpinOptionsService } from '../../service/spin-options.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({

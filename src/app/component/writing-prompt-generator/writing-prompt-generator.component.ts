@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { SpinOptionsService } from '../../services/spin-options.service';
+import { SpinOptionsService } from '../../service/spin-options.service';
 import { daysAvailableType, promptInterface } from '../../interface/environment.interface';
-import { promptData } from '../../../environments/environment';
+import { promptData } from '../../../environment/environment';
 
 @Component({
   selector: 'app-writing-prompt-generator',
