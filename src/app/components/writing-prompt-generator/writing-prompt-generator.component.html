@@ -1,1 +1,13 @@
-<p>writing-prompt-generator works!</p>
+<div>
+    <button (click)="spin()">Prompt me!</button>
+</div>
+@if (randomPrompt != null) {
+    <h1>
+        {{randomPrompt.prompt}}
+    </h1>
+    <p>
+        Posted <a [href]="randomPrompt.link">
+            {{(randomPrompt.date === 31) ? "October 1" : `September ${randomPrompt.date}`}}, {{randomPrompt.year}}
+        </a>
+    </p>
+}

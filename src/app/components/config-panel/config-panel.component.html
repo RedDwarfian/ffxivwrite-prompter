@@ -1,1 +1,64 @@
-<p>config-panel works!</p>
+<div>
+    <label for="spin-mode">Spin Mode:</label>
+    <select
+        name="spin-mode"
+        id="spin-mode"
+        [(ngModel)]="spinOptions.mode">
+        @for (mode of spinMode; track $index) {
+            <option
+                [value]="mode"
+                >
+                {{ spinLabels[mode] }}
+            </option>
+        }
+    </select>
+    @if (spinOptions.mode() === 'year') {
+        <div>
+            <label for="year-select">Select Year:</label>
+            <select
+                id="year-select"
+                name="year-select"
+                [(ngModel)]="spinOptions.specifiedYear">
+                @for (year of spinOptions.yearsAvailable; track $index) {
+                    <option
+                        [ngValue]="year"
+                        >
+                        {{ year }}
+                    </option>
+                }
+            </select>
+        </div>
+    } @else if (spinOptions.mode() === 'date') {
+        <div>
+            <label for="date-select">Select Date:</label>
+            <select
+                id="date-select"
+                name="date-select"
+                [(ngModel)]="spinOptions.specifiedDate">
+                @for (day of spinOptions.datesAvailable; track $index) {
+                    <option
+                        [ngValue]="day"
+                        >
+                        {{ day }}
+                    </option>
+                }
+            </select>
+        </div>
+    }
+</div>
+<div>
+    <label for="include-free">
+        <input
+            type="checkbox"
+            id="include-free"
+            name="include-free"
+            [(ngModel)]="spinOptions.includeFree"
+            />
+        Include Free Prompts
+    </label>
+</div>
+@if (((spinOptions.mode() === 'date' && spinOptions.specifiedDate() === 31) || (spinOptions.mode() === 'today' && spinOptions.todayDate() === 31)) && !spinOptions.includeFree()) {
+    <div class="warning">
+        <strong>Warning:</strong> You have selected a date that only has free prompts available, but have chosen to exclude free prompts. Select a different date, mode, or allow free prompts to receive a prompt.
+    </div>
+}
