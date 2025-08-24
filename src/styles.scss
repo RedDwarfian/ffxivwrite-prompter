@@ -2,14 +2,16 @@
 :root {
   --bg-color: #b1b8bf;
   --border-color: #777;
-  --border-radius: 0.25rem;
-  --text-color: #333;
-  --link-text-color: #111;
-  --link-text-color-hover: #000;
+  --border-radius: 1rem;
+  --text-color: #111;
+  --link-text-color: #333;
+  --link-text-color-hover: #555;
   --window-bg-color: #edf6ff;
-  --button-bg-color-hover: #a6acb2;
-  --button-bg-color-active: #8e9399;
+  --button-bg-color-hover: #c9d1d8;
+  --button-bg-color-active: #bdc4cc;
+  --button-border-radius: 0.25rem;
   --interactive-padding: 0.25rem 0.5rem;
+  --warning-color: #773333;
 }
 
 *,
@@ -38,7 +40,7 @@ body {
 
 a {
   color: var(--link-text-color);
-  text-decoration: none;
+  text-decoration: underline;
 
   &:hover {
     color: var(--link-text-color-hover);

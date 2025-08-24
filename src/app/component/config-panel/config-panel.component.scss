@@ -1,0 +1,33 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select {
+    border: 1px solid var(--border-color);
+    background-color: var(--window-bg-color);
+    color: var(--text-color);
+    border-radius: var(--button-border-radius);
+    padding: var(--interactive-padding);
+    color-scheme: dark;
+
+    &:hover {
+        background-color: var(--button-bg-color-hover);
+    }
+}
+
+.warning {
+    width: 100%;
+    color: var(--warning-color);
+}

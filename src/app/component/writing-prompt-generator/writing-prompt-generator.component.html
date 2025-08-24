@@ -1,4 +1,4 @@
-<div>
+<div class="do-the-thing">
     <button (click)="spin()">Prompt me!</button>
 </div>
 @if (randomPrompt != null) {
@@ -7,7 +7,12 @@
     </h1>
     <p>
         Posted <a [href]="randomPrompt.link">
-            {{(randomPrompt.date === 31) ? "October 1" : `September ${randomPrompt.date}`}}, {{randomPrompt.year}}
+            {{(randomPrompt.date === 31) ? "October 3" : `September ${randomPrompt.date}`}}, {{randomPrompt.year}}
         </a>
     </p>
+} @else {
+    <h1 class="muted">
+        Wait for it...
+    </h1>
+    <p>&nbsp;</p>
 }

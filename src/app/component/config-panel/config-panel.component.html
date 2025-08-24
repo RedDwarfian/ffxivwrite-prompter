@@ -1,5 +1,4 @@
-<div>
-    <label for="spin-mode">Spin Mode:</label>
+<label for="spin-mode">Spin Mode:
     <select
         name="spin-mode"
         id="spin-mode"
@@ -12,53 +11,49 @@
             </option>
         }
     </select>
-    @if (spinOptions.mode() === 'year') {
-        <div>
-            <label for="year-select">Select Year:</label>
-            <select
-                id="year-select"
-                name="year-select"
-                [(ngModel)]="spinOptions.specifiedYear">
-                @for (year of spinOptions.yearsAvailable; track $index) {
-                    <option
-                        [ngValue]="year"
-                        >
-                        {{ year }}
-                    </option>
-                }
-            </select>
-        </div>
-    } @else if (spinOptions.mode() === 'date') {
-        <div>
-            <label for="date-select">Select Date:</label>
-            <select
-                id="date-select"
-                name="date-select"
-                [(ngModel)]="spinOptions.specifiedDate">
-                @for (day of spinOptions.datesAvailable; track $index) {
-                    <option
-                        [ngValue]="day"
-                        >
-                        {{ day }}
-                    </option>
-                }
-            </select>
-        </div>
-    }
-</div>
-<div>
-    <label for="include-free">
-        <input
-            type="checkbox"
-            id="include-free"
-            name="include-free"
-            [(ngModel)]="spinOptions.includeFree"
-            />
-        Include Free Prompts
+</label>
+@if (spinOptions.mode() === 'year') {
+    <label for="year-select">Select Year:
+        <select
+            id="year-select"
+            name="year-select"
+            [(ngModel)]="spinOptions.specifiedYear">
+            @for (year of spinOptions.yearsAvailable; track $index) {
+                <option
+                    [ngValue]="year"
+                    >
+                    {{ year }}
+                </option>
+            }
+        </select>
     </label>
-</div>
+} @else if (spinOptions.mode() === 'date') {
+    <label for="date-select">Select Date:
+        <select
+            id="date-select"
+            name="date-select"
+            [(ngModel)]="spinOptions.specifiedDate">
+            @for (day of spinOptions.datesAvailable; track $index) {
+                <option
+                    [ngValue]="day"
+                    >
+                    {{ day }}
+                </option>
+            }
+        </select>
+    </label>
+}
+<label for="include-free">
+    <input
+        type="checkbox"
+        id="include-free"
+        name="include-free"
+        [(ngModel)]="spinOptions.includeFree"
+        />
+    Include Free Days
+</label>
 @if (((spinOptions.mode() === 'date' && spinOptions.specifiedDate() === 31) || (spinOptions.mode() === 'today' && spinOptions.todayDate() === 31)) && !spinOptions.includeFree()) {
     <div class="warning">
-        <strong>Warning:</strong> You have selected a date that only has free prompts available, but have chosen to exclude free prompts. Select a different date, mode, or allow free prompts to receive a prompt.
+        <strong>Warning:</strong> You have selected a date that only has "Free day" prompts available, but have chosen to exclude free prompts. Select a different date, mode, or allow free prompts to receive a prompt.
     </div>
 }

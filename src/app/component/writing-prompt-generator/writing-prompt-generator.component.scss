@@ -1,0 +1,15 @@
+@use '../../../styles/presets';
+
+.muted {
+    color: var(--bg-color);
+}
+
+.do-the-thing {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+button {
+    font-size: 1.25rem;
+    @include presets.button;
+}

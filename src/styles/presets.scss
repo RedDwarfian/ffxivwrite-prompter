@@ -1,10 +1,10 @@
 @mixin button {
   display: inline-block;
   text-wrap: nowrap;
-  background: var(--bg-color);
+  background: var(--window-bg-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--button-border-radius);
   padding: var(--interactive-padding);
   cursor: pointer;
 
