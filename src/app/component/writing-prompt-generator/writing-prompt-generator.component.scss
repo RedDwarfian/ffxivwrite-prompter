@@ -27,7 +27,11 @@ h1 {
         none;
     }
   }
+  + p {
+    margin-top: 0;
+  }
 }
+
 
 @keyframes spinning {
   0% {

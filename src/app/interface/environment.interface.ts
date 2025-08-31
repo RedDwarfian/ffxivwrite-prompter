@@ -1,3 +1,10 @@
+export type releaseInterface = {
+  [year in yearsAvailableType]: {
+    date: daysAvailableType;
+    release: string;
+  }[];
+};
+
 export type promptInterface = {
   date: daysAvailableType;
   prompt: string;

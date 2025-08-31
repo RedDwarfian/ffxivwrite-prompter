@@ -8,9 +8,10 @@ import {
 import { SpinOptionsService } from '../../service/spin-options.service';
 import {
   daysAvailableType,
+  releaseInterface,
   promptInterface,
 } from '../../interface/environment.interface';
-import { promptData } from '../../../environment/environment';
+import { releaseData, promptData } from '../../../environment/environment';
 
 @Component({
   selector: 'app-writing-prompt-generator',
@@ -21,10 +22,12 @@ import { promptData } from '../../../environment/environment';
 export class WritingPromptGeneratorComponent implements OnInit {
   public spinOptions = inject(SpinOptionsService);
   public randomPrompt: promptInterface | null = null;
+  public randomRelease: string | null = null;
   public displayPrompts: promptInterface[] = [];
   public animating = false;
   private promptInfo =
     viewChild<ElementRef<HTMLParagraphElement>>('promptInfo');
+  private releases: releaseInterface = releaseData;
 
   ngOnInit(): void {
     this.promptInfo()?.nativeElement.addEventListener('animationend', (ev) => {
@@ -73,11 +76,15 @@ export class WritingPromptGeneratorComponent implements OnInit {
       return true;
     });
     this.randomPrompt = null;
+    this.randomRelease = '';
     this.displayPrompts = [];
 
     if (culledPrompts.length > 0) {
       let randomIndex = Math.floor(Math.random() * culledPrompts.length);
       this.randomPrompt = culledPrompts[randomIndex];
+      this.randomRelease = this.releases[this.randomPrompt.year].find(
+        (r) => r.date <= culledPrompts[randomIndex].date
+      )?.release ?? '';
 
       // Add the prompts to the displayPrompts so we can animate them all flying by.
       while (
@@ -90,7 +97,7 @@ export class WritingPromptGeneratorComponent implements OnInit {
           randomIndex += culledPrompts.length;
         }
       }
-
+      console.log(this.promptInfo()?.nativeElement);
       // Set the promptInfo to fade in after the flying animation ends.
       this.promptInfo()?.nativeElement.classList.add('fadeIn');
       this.animating = true;

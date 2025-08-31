@@ -1,4 +1,59 @@
-import { promptInterface } from '../app/interface/environment.interface';
+import { releaseInterface, promptInterface } from '../app/interface/environment.interface';
+
+export const releaseData: releaseInterface = {
+  2017: [
+    {
+      date: 1,
+      release: 'Stormblood 4.0'
+    }
+  ],
+  2018: [
+    {
+      date: 18,
+      release: 'Stormblood 4.4'
+    },
+    {
+      date: 1,
+      release: 'Stormblood 4.3'
+    }
+  ],
+  2019: [
+    {
+      date: 1,
+      release: 'Shadowbringers 5.0'
+    }
+  ],
+  2020: [
+    {
+      date: 1,
+      release: 'Shadowbringers 5.3'
+    }
+  ],
+  2021: [
+    {
+      date: 1,
+      release: 'Shadowbringers 5.55'
+    }
+  ],
+  2022: [
+    {
+      date: 1,
+      release: 'Endwalker 6.2'
+    }
+  ],
+  2023: [
+    {
+      date: 1,
+      release: 'Endwalker 6.4'
+    }
+  ],
+  2024: [
+    {
+      date: 1,
+      release: 'Dawntrail 7.0'
+    }
+  ]
+};
 
 export const promptData: promptInterface[] = [
   {

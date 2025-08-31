@@ -14,6 +14,7 @@
 </div>
 <p #promptInfo>
   @if (randomPrompt == null) {
+    &nbsp;<br/>
     &nbsp;
   } @else {
     Posted
@@ -23,6 +24,7 @@
           ? "October 3"
           : `September ${randomPrompt.date}`
       }}, {{ randomPrompt.year }}
-    </a>
+    </a><br/>
+    {{ randomRelease }}
   }
 </p>
